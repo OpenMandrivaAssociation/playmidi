@@ -15,7 +15,7 @@ Patch1: 	%{name}-2.3-awe2.patch.bz2
 Patch2:		playmidi-2.4-lib64.patch.bz2
 Patch3: 	%{name}-2.4-midimap.patch.bz2
 Patch4:		playmidi-2.4-CAN-2005-0020.patch.bz2
-BuildRequires:	ncurses-devel XFree86-devel
+BuildRequires:	ncurses-devel X11-devel
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-buildroot
 
 %package X11
