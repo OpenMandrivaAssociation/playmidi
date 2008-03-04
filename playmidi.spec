@@ -1,11 +1,10 @@
 %define name 	playmidi
 %define version 2.5
-%define release %mkrel 6
 
 Summary:	A MIDI sound file player
 Name: 		%{name}
 Version:	%{version}
-Release: 	%{release}
+Release: 	%mkrel 7
 Source0: 	%{name}-%{version}.tar.bz2
 URL:		http://sourceforge.net/projects/playmidi/
 License: 	GPL
