@@ -1,21 +1,18 @@
-%define name 	playmidi
-%define version 2.5
-
 Summary:	A MIDI sound file player
-Name: 		%{name}
-Version:	%{version}
-Release: 	%mkrel 7
+Name: 		playmidi
+Version:	2.5
+Release: 	%mkrel 8
 Source0: 	%{name}-%{version}.tar.bz2
 URL:		http://sourceforge.net/projects/playmidi/
 License: 	GPL
 Group: 		Sound
-Patch0: 	%{name}-2.3-hertz.patch.bz2
-Patch1: 	%{name}-2.3-awe2.patch.bz2
-Patch2:		playmidi-2.4-lib64.patch.bz2
-Patch3: 	%{name}-2.4-midimap.patch.bz2
-Patch4:		playmidi-2.4-CAN-2005-0020.patch.bz2
+Patch0: 	%{name}-2.3-hertz.patch
+Patch1: 	%{name}-2.3-awe2.patch
+Patch2:		playmidi-2.4-lib64.patch
+Patch3: 	%{name}-2.4-midimap.patch
+Patch4:		playmidi-2.4-CAN-2005-0020.patch
 BuildRequires:	ncurses-devel X11-devel
-BuildRoot: 	%{_tmppath}/%{name}-%{version}-buildroot
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %package X11
 Summary:	An X Window System based MIDI sound file player
@@ -58,22 +55,24 @@ PATH=.:$PATH
 %{__make} CFLAGS="$RPM_OPT_FLAGS" LIB="%{_lib}" x%{name}
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
-install -s -m 755 %{name} -D $RPM_BUILD_ROOT%{_bindir}/%{name}
-install -s -m 755 x%{name} -D $RPM_BUILD_ROOT%{_prefix}/X11R6/bin/x%{name}
-install -m 644 XPlaymidi.ad -D $RPM_BUILD_ROOT%{_prefix}/X11R6/%{_lib}/X11/app-defaults/XPlaymidi
+install -d %{buildroot}%{_bindir}
+install -d %{buildroot}%{_datadir}/app-defaults/XPlaymidi
+install -d %{buildroot}%{_mandir}/man1
 
-install -m 644 %{name}.1 -D $RPM_BUILD_ROOT%{_mandir}/man1/%{name}.1
+install -m0755 %{name} %{buildroot}%{_bindir}/%{name}
+install -m0755 x%{name} %{buildroot}%{_bindir}/x%{name}
+install -m0644 XPlaymidi.ad %{buildroot}%{_datadir}/app-defaults/XPlaymidi
+install -m0644 %{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 
-mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/midi
-for n in std.o3 drums.o3 std.sb drums.sb
-do
-	install -m 644 $n -D $RPM_BUILD_ROOT%{_sysconfdir}/midi/$n
+install -d %{buildroot}%{_sysconfdir}/midi
+for n in std.o3 drums.o3 std.sb drums.sb; do
+    install -m 644 $n -D %{buildroot}%{_sysconfdir}/midi/$n
 done
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
@@ -89,5 +88,5 @@ rm -rf $RPM_BUILD_ROOT
 %files X11
 %defattr(-,root,root)
 %doc QuickStart COPYING BUGS
-%{_prefix}/X11R6/%{_lib}/X11/app-defaults/XPlaymidi
-%{_prefix}/X11R6/bin/x%{name}
+%{_bindir}/x%{name}
+%{_datadir}/app-defaults/XPlaymidi
