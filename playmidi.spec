@@ -4,13 +4,15 @@ Version:	2.5
 Release: 	%mkrel 9
 Source0: 	%{name}-%{version}.tar.bz2
 URL:		http://sourceforge.net/projects/playmidi/
-License: 	GPL
+License: 	GPLv2
 Group: 		Sound
 Patch0: 	%{name}-2.3-hertz.patch
 Patch1: 	%{name}-2.3-awe2.patch
 Patch2:		playmidi-2.4-lib64.patch
 Patch3: 	%{name}-2.4-midimap.patch
 Patch4:		playmidi-2.4-CAN-2005-0020.patch
+Patch5:		%{name}-2.5-fix-str-fmt.patch
+Patch6:		%{name}-2.5-fix-overlinking.patch
 BuildRequires:	ncurses-devel X11-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -43,6 +45,8 @@ sound files using your computer's sound card.
 %patch2 -p1 -b .lib64
 %patch3 -p1 -b .midimap
 %patch4 -p1 -b .can-2005-0020
+%patch5 -p1 -b .strfmt
+%patch6 -p1 -b .overlinking
 
 %build
 ./Configure << EOF
