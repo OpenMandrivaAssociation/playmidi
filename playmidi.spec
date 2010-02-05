@@ -1,15 +1,15 @@
 Summary:	A MIDI sound file player
-Name: 		playmidi
+Name:		playmidi
 Version:	2.5
-Release: 	%mkrel 9
-Source0: 	%{name}-%{version}.tar.bz2
+Release:	%mkrel 10
+Source0:	%{name}-%{version}.tar.bz2
 URL:		http://sourceforge.net/projects/playmidi/
-License: 	GPLv2
-Group: 		Sound
-Patch0: 	%{name}-2.3-hertz.patch
-Patch1: 	%{name}-2.3-awe2.patch
+License:	GPLv2+
+Group:		Sound
+Patch0:		%{name}-2.3-hertz.patch
+Patch1:		%{name}-2.3-awe2.patch
 Patch2:		playmidi-2.4-lib64.patch
-Patch3: 	%{name}-2.4-midimap.patch
+Patch3:		%{name}-2.4-midimap.patch
 Patch4:		playmidi-2.4-CAN-2005-0020.patch
 Patch5:		%{name}-2.5-fix-str-fmt.patch
 Patch6:		%{name}-2.5-fix-overlinking.patch
@@ -18,8 +18,8 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %package X11
 Summary:	An X Window System based MIDI sound file player
-Requires: 	%{name} = %{version}
-Group: 		Sound
+Requires:	%{name} = %{version}
+Group:		Sound
 
 %description
 Playmidi plays MIDI (Musicial Instrument Digital Interface) sound
