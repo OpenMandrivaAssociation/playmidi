@@ -1,7 +1,7 @@
 Summary:	A MIDI sound file player
 Name:		playmidi
 Version:	2.5
-Release:	%mkrel 11
+Release:	%mkrel 12
 Source0:	%{name}-%{version}.tar.bz2
 URL:		http://sourceforge.net/projects/playmidi/
 License:	GPLv2+
@@ -13,7 +13,10 @@ Patch3:		%{name}-2.4-midimap.patch
 Patch4:		playmidi-2.4-CAN-2005-0020.patch
 Patch5:		%{name}-2.5-fix-str-fmt.patch
 Patch6:		%{name}-2.5-fix-overlinking.patch
-BuildRequires:	ncurses-devel X11-devel
+BuildRequires:	ncurses-devel
+BuildRequires:	libx11-devel
+BuildRequires:	libxaw-devel
+BuildRequires:	libxt-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %package X11
@@ -55,8 +58,8 @@ EOF
 
 PATH=.:$PATH
 
-%{__make} CFLAGS="$RPM_OPT_FLAGS" LIB="%{_lib}" %{name}
-%{__make} CFLAGS="$RPM_OPT_FLAGS" LIB="%{_lib}" x%{name}
+%{__make} CFLAGS="%optflags" LDFLAGS="%ldflags" LIB="%{_lib}" %{name}
+%{__make} CFLAGS="%optflags" LDFLAGS="%ldflags" LIB="%{_lib}" x%{name}
 
 %install
 rm -rf %{buildroot}
