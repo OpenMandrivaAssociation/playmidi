@@ -1,0 +1,21 @@
+diff -uNr playmidi-2.4.ori/io_xaw.c playmidi-2.4/io_xaw.c
+--- playmidi-2.4.ori/io_xaw.c	2009-05-21 06:16:08.000000000 +0200
++++ playmidi-2.4/io_xaw.c	2009-05-21 06:17:15.000000000 +0200
+@@ -287,7 +287,7 @@
+ 	sprintf(TEXTBUF, "\n");
+ 	AppendText(textbuf);
+ 	if (verbose > 2)
+-	    printf(textbuf);
++	    printf("%s", textbuf);
+     } else if (cmd & 0x80)
+ 	switch (cmd & 0xf0) {
+ 	case MIDI_NOTEON:
+@@ -317,7 +317,7 @@
+ 	    sprintf(TEXTBUF, "\n");
+ 	    AppendText(textbuf);
+ 	    if (verbose > 2)
+-		printf(textbuf);
++		printf("%s", textbuf);
+ 	    break;
+ 	default:
+ 	    break;

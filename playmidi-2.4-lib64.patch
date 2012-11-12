@@ -1,0 +1,24 @@
+--- playmidi-2.4/Makefile.lib64	1998-10-01 04:39:18.000000000 +0200
++++ playmidi-2.4/Makefile	2003-10-02 14:37:54.000000000 +0200
+@@ -10,14 +10,17 @@
+ #
+ ###########################################################################
+ 
++# native library dirname
++LIB	= lib
++
+ # ncurses usually /usr/lib, -L/usr/local/lib doesn't hurt
+ # unless there's more than one ncurses floating around on your system
+-LIBNC	= -L/usr/local/lib -lncurses
++LIBNC	= -L/usr/$(LIB) -lncurses
+ 
+ ######### NOTE:  X11R6 or newer REQUIRED
+-LIBX11	= -L/usr/X11R6/lib -lXaw -lXmu -lXt -lX11 -lXext -lSM -lICE
+-LIBGTK	= -L/usr/X11R6/lib -lgtk-1.1 -lgdk-1.1 -lglib-1.1 -lX11 -lXext -lm
+-LIBVGA	= -L/usr/local/lib -lvgagl -lvga
++LIBX11	= -L/usr/$(LIB) -lXaw -lXmu -lXt -lX11 -lXext -lSM -lICE
++LIBGTK	= -L/usr/$(LIB) -lgtk-1.1 -lgdk-1.1 -lglib-1.1 -lX11 -lXext -lm
++LIBVGA	= -L/usr/local/$(LIB) -lvgagl -lvga
+ 
+ # ncurses is usually in /usr/include/ncurses, but you may need
+ # to use /usr/local/include/ncurses depending on your setup.

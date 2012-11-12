@@ -1,0 +1,56 @@
+--- playmidi-2.4.orig/playmidi.c
++++ playmidi-2.4/playmidi.c
+@@ -22,6 +22,7 @@
+ #include <ctype.h>
+ #include <unistd.h>
+ #include <sys/stat.h>
++#include <errno.h>
+ #include "playmidi.h"
+ 
+ SEQ_DEFINEBUF(SEQUENCERBLOCKSIZE);
+@@ -186,6 +187,15 @@
+     struct stat info;
+     int piped = 0;
+ 
++    /* CPhipps 2000/02/04 - this might be splaymidi, in which case we're
++     * probably setuid root. Drop privs immediately.. io_svgalib.c can
++     * regain them */
++    if (getuid() != geteuid())
++	if (seteuid(getuid())) {
++	    perror("seteuid");
++	    exit(EPERM); /* Seems appropriate */
++	}
++
+     printf("%s Copyright (C) 1994-1997 Nathan I. Laredo,"
+ 	   " AWE32 by Takashi Iwai\n"
+ 	   "This is free software with ABSOLUTELY NO WARRANTY.\n"
+@@ -439,9 +449,9 @@
+     for (i = optind; i < argc;) {
+ 	filename = argv[i];
+ 	if (stat(filename, &info) == -1) {
+-	    if ((extra = malloc(strlen(filename) + 4)) == NULL)
++	    if ((extra = malloc(strlen(filename) + 5)) == NULL)
+ 		close_show(-1);
+-	    sprintf(extra, "%s.mid", filename);
++	    snprintf(extra, sizeof(extra), "%s.mid", filename);
+ 	    if (stat(extra, &info) == -1)
+ 		close_show(-1);
+ 	    if ((mfd = fopen(extra, "r")) == NULL)
+@@ -452,7 +462,7 @@
+ 	    if (ext && strcmp(ext, ".gz") == 0) {
+ 		char temp[1024];
+ 		piped = 1;
+-		sprintf(temp, "gzip -l %s", filename);
++		snprintf(temp, sizeof(temp), "gzip -l %s", filename);
+ 		if ((mfd = popen(temp, "r")) == NULL)
+ 		    close_show(-1);
+ 		fgets(temp, sizeof(temp), mfd); /* skip 1st line */
+@@ -460,7 +470,7 @@
+ 		strtok(temp, " "); /* compressed size */
+ 		info.st_size = atoi(strtok(NULL, " ")); /* original size */
+ 		pclose(mfd);
+-		sprintf(temp, "gzip -d -c %s", filename);
++		snprintf(temp, sizeof(temp), "gzip -d -c %s", filename);
+ 		if ((mfd = popen(temp, "r")) == NULL)
+ 		    close_show(-1);
+ 	    } else if ((mfd = fopen(filename, "r")) == NULL)

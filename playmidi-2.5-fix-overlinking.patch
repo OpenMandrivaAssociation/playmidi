@@ -1,0 +1,12 @@
+diff -uNr playmidi-2.4.ori/Makefile playmidi-2.4/Makefile
+--- playmidi-2.4.ori/Makefile	2009-05-21 06:22:49.000000000 +0200
++++ playmidi-2.4/Makefile	2009-05-21 06:26:59.000000000 +0200
+@@ -18,7 +18,7 @@
+ LIBNC	= -L/usr/$(LIB) -lncurses
+ 
+ ######### NOTE:  X11R6 or newer REQUIRED
+-LIBX11	= -L/usr/$(LIB) -lXaw -lXmu -lXt -lX11 -lXext -lSM -lICE
++LIBX11	= -L/usr/$(LIB) -lXaw -lXt -lX11
+ LIBGTK	= -L/usr/$(LIB) -lgtk-1.1 -lgdk-1.1 -lglib-1.1 -lX11 -lXext -lm
+ LIBVGA	= -L/usr/local/$(LIB) -lvgagl -lvga
+ 
