@@ -1,7 +1,7 @@
 Summary:	A MIDI sound file player
 Name:		playmidi
 Version:	2.5
-Release:	%mkrel 13
+Release:	%mkrel 14
 Source0:	%{name}-%{version}.tar.bz2
 URL:		http://sourceforge.net/projects/playmidi/
 License:	GPLv2+
@@ -97,3 +97,153 @@ rm -rf %{buildroot}
 %doc QuickStart COPYING BUGS
 %{_bindir}/x%{name}
 %{_datadir}/app-defaults/XPlaymidi
+
+
+%changelog
+* Thu May 05 2011 Oden Eriksson <oeriksson@mandriva.com> 2.5-13mdv2011.0
++ Revision: 667783
+- mass rebuild
+
+* Sat Jan 01 2011 Funda Wang <fwang@mandriva.org> 2.5-12mdv2011.0
++ Revision: 626941
+- tighten BR
+
+* Fri Dec 03 2010 Oden Eriksson <oeriksson@mandriva.com> 2.5-11mdv2011.0
++ Revision: 607179
+- rebuild
+
+* Fri Feb 05 2010 Sandro Cazzaniga <kharec@mandriva.org> 2.5-10mdv2010.1
++ Revision: 501089
+- Fix Rpmlint warnings
+- fix licence
+
+* Thu May 21 2009 J√©r√¥me Brenier <incubusss@mandriva.org> 2.5-9mdv2010.0
++ Revision: 378385
+- fix str fmt (1 patch added)
+- fix overlinking (1 patch added)
+- fix license
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - rebuild
+
+* Thu Mar 06 2008 Oden Eriksson <oeriksson@mandriva.com> 2.5-8mdv2008.1
++ Revision: 180869
+- bunzip the patches
+- fix #24754
+
+* Tue Mar 04 2008 Oden Eriksson <oeriksson@mandriva.com> 2.5-7mdv2008.1
++ Revision: 179238
+- rebuild
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+    - buildrequires X11-devel instead of XFree86-devel
+
+* Wed Aug 29 2007 Oden Eriksson <oeriksson@mandriva.com> 2.5-6mdv2008.0
++ Revision: 74312
+- Import playmidi
+
+
+
+* Wed Sep 20 2006 Nicolas LÈcureuil <neoclust@mandriva.org> 2.5-6mdv2007.0
+- Rebuild against ncurse
+
+* Sun Jan 01 2006 Mandriva Linux Team <http://www.mandrivaexpert.com/> 2.5-5mdk
+- Rebuild
+
+* Fri Feb 25 2005 Thierry Vignaud <tvignaud@mandrakesoft.com> 2.5-4mdk
+- security update for CAN-2005-0020 (Vincent Danen <vdanen@mandrakesoft.com>)
+
+* Thu Oct  2 2003 Gwenole Beauchesne <gbeauchesne@mandrakesoft.com> 2.5-3mdk
+- lib64 fixes
+
+* Sun Jun 15 2003 Stefan van der Eijk <stefan@eijk.nu> 2.5-2mdk
+- BuildRequires
+
+* Sun Jun 15 2003 Per ÿyvind Karlsen <peroyvind@sintrax.net> 2.5-1mdk
+- 2.5
+- updated URL
+- macroize
+- drop S0 (merged upstream)
+- drop P2, much better to override the variable than patching it
+- configure in %%build stage
+- fix unowned dir
+- cleanups
+
+* Thu Nov 22 2001 Yves Duret <yduret@mandrakesoft.com> 2.4-21mdk
+- fix url tag missing
+
+* Wed Jul 11 2001 Yves Duret <ydret@mandrakesoft.com> 2.4-20mdk
+- sanitized spec file : macros, s/Copy/lic/ ..
+
+* Sun Dec 24 2000 Yves Duret <yduret@mandrakesoft.com> 2.4-19mdk
+- %%doc missing
+- removed bz2 lines for man pages
+
+* Thu Dec 21 2000 Yves Duret <yduret@mandrakesoft.com> 2.4-18mdk
+- added %%config(noreplace)
+
+* Sun Dec 17 2000 Yves Duret <yduret@mandrakesoft.com> 2.4-17mdk
+- macroization
+
+* Mon Sep 25 2000 Maurizio De Cecco <maurizio@mandrakesoft.com> 2.4-16mdk
+- Resource file not a config file anymore.
+
+* Mon Aug 09 2000 Maurizio De Cecco <maurizio@mandrakesoft.com> 2.4-15mdk
+- Added macros for mandir and bindir.
+
+* Mon Aug 07 2000 Frederic Lepied <flepied@mandrakesoft.com> 2.4-14mdk
+- automatically added BuildRequires
+
+* Tue Apr 11 2000 Maurizio De Cecco <maurizio@mandrakesoft.com>
+- Fixed Distribution name
+
+* Thu Apr 10 2000 Maurizio De Cecco  <maurizio@mandrakesoft.com>
+- Fixed error in the new Group structure
+
+* Thu Mar 16 2000 Maurizio De Cecco  <maurizio@mandrakesoft.com>
+- Adapted to the new Group structure
+
+* Wed Nov 17 1999 Chmouel Boudjnah <chmouel@mandrakesoft.com>
+- Don't ship splaymidi(r).
+
+* Wed May 05 1999 Bernhard Rosenkraenzer <bero@mandrakesoft.com>
+- Mandrake adaptions
+
+* Sun Mar 21 1999 Cristian Gafton <gafton@redhat.com> 
+- auto rebuild in the new build environment (release 7)
+
+* Tue Feb 23 1999 Bill Nottingham <notting@redhat.com>
+- wmconfig goes away
+
+* Mon Dec 28 1998 Bill Nottingham <notting@redhat.com>
+- build against glibc-2.1
+
+* Mon Nov 23 1998 Bill Nottingham <notting@redhat.com>
+- oops. We broke FM synth. Fixed.
+
+* Sat Oct 10 1998 Cristian Gafton <gafton@redhat.com>
+- strip binaries
+- updated to version 2.4
+
+* Wed Sep  9 1998 Bill Nottingham <notting@redhat.com>
+- added AWE32 support
+
+* Mon Aug 17 1998 Jeff Johnson <jbj@redhat.com>
+- build root
+- sound font data in /etc/midi
+
+* Thu May 07 1998 Prospector System <bugs@redhat.com>
+- translations modified for de, fr, tr
+
+* Wed Apr 15 1998 Erik Troan <ewt@redhat.com>
+- built against new ncurses
+
+* Tue Oct 21 1997 Otto Hammersmith <otto@redhat.com>
+- added wmconfig entries
+
+* Mon Jul 21 1997 Erik Troan <ewt@redhat.com>
+- built against glibc
