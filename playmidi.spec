@@ -14,9 +14,9 @@ Patch4:		playmidi-2.4-CAN-2005-0020.patch
 Patch5:		%{name}-2.5-fix-str-fmt.patch
 Patch6:		%{name}-2.5-fix-overlinking.patch
 BuildRequires:	ncurses-devel
-BuildRequires:	libx11-devel
-BuildRequires:	libxaw-devel
-BuildRequires:	libxt-devel
+BuildRequires:	pkgconfig(x11)
+BuildRequires:	pkgconfig(xaw7)
+BuildRequires:	pkgconfig(xt)
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %package X11
