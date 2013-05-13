@@ -1,7 +1,7 @@
 Summary:	A MIDI sound file player
 Name:		playmidi
 Version:	2.5
-Release:	%mkrel 14
+Release:	15
 Source0:	%{name}-%{version}.tar.bz2
 URL:		http://sourceforge.net/projects/playmidi/
 License:	GPLv2+
@@ -17,7 +17,6 @@ BuildRequires:	ncurses-devel
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xaw7)
 BuildRequires:	pkgconfig(xt)
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %package X11
 Summary:	An X Window System based MIDI sound file player
