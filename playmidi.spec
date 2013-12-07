@@ -1,7 +1,7 @@
 Summary:	A MIDI sound file player
 Name:		playmidi
 Version:	2.5
-Release:	17
+Release:	18
 License:	GPLv2+
 Group:		Sound
 Url:		http://sourceforge.net/projects/playmidi/
