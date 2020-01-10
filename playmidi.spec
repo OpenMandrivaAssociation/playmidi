@@ -42,7 +42,7 @@ sound files using your computer's sound card.
 
 %prep
 %setup -qn %{name}-2.4
-%apply_patches
+%autopatch -p1
 
 %build
 ./Configure << EOF
