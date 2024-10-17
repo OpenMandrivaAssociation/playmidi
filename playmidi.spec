@@ -4,7 +4,7 @@ Version:	2.5
 Release:	25
 License:	GPLv2+
 Group:		Sound
-Url:		http://sourceforge.net/projects/playmidi/
+Url:		https://sourceforge.net/projects/playmidi/
 Source0:	%{name}-%{version}.tar.bz2
 Patch0:		%{name}-2.3-hertz.patch
 Patch1:		%{name}-2.3-awe2.patch
